@@ -1,0 +1,91 @@
+/*************  CLUSTER   ************/
+
+.marker-cluster{
+	border-radius: 40px;
+	margin-left: -38px !important;
+	margin-top: -38px !important;
+	padding:7px !important;
+	width: 77px !important;
+	height: 77px !important;
+	background-image: url("../images/markers/marker_cluster.png");
+	background-color: transparent !important;
+    background-repeat: no-repeat;
+}
+
+.marker-cluster div{
+	border-radius: 25px;
+	width: 53px !important;
+	height: 53px !important;
+	background-color: transparent !important;
+	padding: 10px !important;
+	font-size: 15px !important;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
+
+.marker-cluster-small{
+	border-radius: 30px;
+	margin-left: -27px !important;
+	margin-top: -27px !important;
+	padding:7px !important;
+	width: 55px !important;
+	height: 55px !important;
+	background-image: url("../images/markers/marker_cluster_small.png");
+	background-color: transparent !important;
+    background-repeat: no-repeat;
+}
+
+.marker-cluster-small div{
+	border-radius: 25px;
+	margin-left: 6px !important;
+	margin-top: 0px !important;
+	width: 20px !important;
+	height: 20px !important;
+	background-color: transparent !important;
+	padding: 10px !important;
+	font-size: 15px !important;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    color : black;
+}
+
+/*************  POPUP   ************/
+
+.popup-tags {
+    color: red;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline;
+}
+
+.popup-section{
+	margin-top: 15px;
+	font-size: 12px;
+}
+
+.popup-subtitle {
+
+    font-weight: 400;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    float: left;
+
+}
+
+.btn-more {
+
+	border-color: #D2D2D2 !important;
+	margin-top: 5px;
+	margin-bottom: 7px !important;
+	text-align: center;
+	color: #3C3C3C !important;
+	font-weight: 500;
+	border-radius: 10px 10px 10px 10px !important;
+	width: 100%;
+
+}
+.popup-info-profil{
+	margin-left: 10px;	
+}
