@@ -16,6 +16,8 @@ class IndexAction extends CAction
 			"canManageNews"=>false,
 			"formCreate"=>true,
 			"indexStep"=>6,
+			"nbCol"=>2,
+			"inline"=> false,
 			"scroll"=>true,
 			"clickEvent"=>false
 		);
