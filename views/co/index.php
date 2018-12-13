@@ -84,7 +84,9 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFiles, Yii::app()->request->
 	</ul>
 </div>
 
-<?php $this->renderPartial('modalModeration', array()); ?>
+<?php $this->renderPartial('modalModeration', array()); 
+	if( @Yii::app()->session["userId"] ) $this->renderPartial('modalShare', array()); ?>
+
 <script type="text/javascript" >
 	modules.news = <?php echo json_encode( News::getConfig() ) ?> ;
 	var news = {};

@@ -258,7 +258,7 @@ if(@$media["object"]){
         </h5>
   </div>
 
-  <div class="timeline-body  col-xs-12 text-left margin-bottom-10">
+  <div class="timeline-body  col-xs-12 text-left margin-bottom-15 margin-top-15">
     <?php if(!empty(@$media["comment"])){ ?>
       <span class=""><?php echo $media["comment"]; ?>
       </span>
