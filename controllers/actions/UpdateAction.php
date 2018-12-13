@@ -13,8 +13,9 @@ class UpdateAction extends CAction
     			"canManageNews"=>true,
     			"canPostNews"=>true,
                 "nbCol" => 1,
+                "endStream"=>false,
                 "pair" => false);
-			echo $controller->renderPartial("newsPartialCO2", $params,true);
+			echo $controller->renderPartial("news.views.co.timelineTree", $params,true);
     	}
 		else
         	return Rest::json($result);

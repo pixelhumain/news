@@ -211,7 +211,7 @@ foreach($news as $key => $media){
         $("#"+v.type+e).parent().find(".list-news:eq(1)").addClass("addMargin");
         if(!$("#"+v.type+e).parent().find(".list-news:eq(1)").hasClass("timeline-inverted"))
           $("#"+v.type+e).addClass("timeline-inverted");
-      }  //$("#"+v.type+e).prev(".list-news"))
+      }
       
       // CSS DESIGN NEWS ORGANIZATION
       var currentOffset=$("#"+v.type+e).offset();
@@ -220,6 +220,11 @@ foreach($news as $key => $media){
         if(currentOffset.top>=(prevOffset.top-20) && currentOffset.top<=(prevOffset.top+20))
            $("#"+v.type+e).addClass("addMargin");
       }
+      //if(!$("#"+v.type+e).prevAll(".list-news").hasClass("timeline-inverted") && !$("#"+v.type+e).hasClass("timeline-inverted"))
+        //$("#"+v.type+e).addClass("timeline-inverted");
+      //if($("#"+v.type+e).prevAll(".list-news").hasClass("timeline-inverted") && $("#"+v.type+e).hasClass("timeline-inverted"))
+        //$("#"+v.type+e).removeClass("timeline-inverted");
+      
       if(actionController=="save")
         initCommentsTools(new Array(v));
       if("undefined" != typeof v.text){

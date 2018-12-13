@@ -180,8 +180,14 @@ div.timeline .date_separator span{
 .extracted_content h4{
   margin-top:inherit;
   margin-bottom: 5px;
+  font-size: 14px;
+  text-align: justify;
 }
 
+.extracted_content p{
+  font-size: 12px;
+  text-align: justify;
+}
 .loading_indicator{
   position: absolute;
     right: 10px;
@@ -192,9 +198,6 @@ div.timeline .date_separator span{
 #results, .resultGetUrl{
   display:none;
     border: 1px solid #eee;
-}
-.results, .resultGetUrl{
-  margin-top: 10px;
 }
 .results .searchEntityContainer{
   width: 100% !important;
@@ -234,6 +237,9 @@ div.timeline .date_separator span{
 .results .extracted_content{
   padding:0px 0px 0px 5px;
 
+}
+.results .extracted_content.col-xs-12{
+  padding: 0px;
 }
 .videoSignal{
   position: absolute;

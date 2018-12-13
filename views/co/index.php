@@ -20,6 +20,9 @@ $cssAnsScriptFilesModule = array(
 	'/js/default/directory.js',
 	'/js/default/search.js',
 	'/js/default/globalsearch.js',
+	'/js/news/autosize.js',
+  '/js/menus/multi_tags_scopes.js',
+  '/js/cooperation/uiModeration.js',
 );
 HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule, Yii::app()->getModule( "co2" )->getAssetsUrl() );
 $cssAnsScriptFiles = array(

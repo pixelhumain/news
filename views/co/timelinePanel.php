@@ -242,7 +242,7 @@ if(@$media["object"]){
                 </ul>
               </div>
               <?php } ?>
-          <span class="margin-top-10 margin-bottom-10 hidden-xs pull-right">
+          <span class="margin-top-10 margin-bottom-10 pull-right">
             <small>
               <i class="fa fa-clock-o"></i> 
               <?php //var_dump(@$media["updated"]);
@@ -258,7 +258,7 @@ if(@$media["object"]){
         </h5>
   </div>
 
-  <div class="timeline-body  col-md-12 text-left margin-bottom-10">
+  <div class="timeline-body  col-xs-12 text-left margin-bottom-10">
     <?php if(!empty(@$media["comment"])){ ?>
       <span class=""><?php echo $media["comment"]; ?>
       </span>
@@ -326,7 +326,7 @@ if(@$media["object"]){
             frameborder="0" allowfullscreen></iframe>
   <?php } ?>
   <?php if(@$media["media"]){ ?>
-    <div id="result<?php echo $key ?>" class="bg-white results padding-15 col-md-12 col-sm-12 col-xs-12"></div>
+    <div id="result<?php echo $key ?>" class="bg-white results col-md-12 col-sm-12 col-xs-12 no-padding"></div>
   <?php } ?>
 
 

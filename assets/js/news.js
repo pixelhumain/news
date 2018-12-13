@@ -356,7 +356,7 @@ function modifyNews(idNews,typeNews){
 				newNews=mentionsInit.beforeSave(newNews, '.newsTextUpdate');	
 				$.ajax({
 			        type: "POST",
-			        url: baseUrl+"/news/update?tpl=co2",
+			        url: baseUrl+"/news/co/update?tpl=co2",
 			        data: newNews,
 					type: "POST",
 			    }).done(function (data) {
@@ -482,7 +482,7 @@ function deleteNews(id, type, $this){
 
 				$.ajax({
 			        type: "POST",
-			        url: baseUrl+"/news/delete/id/"+id,
+			        url: baseUrl+"/news/co/delete/id/"+id,
 					//dataType: "json",
 					data: {"isLive": isLive},
 		        	success: function(data){
