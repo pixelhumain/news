@@ -292,7 +292,7 @@ if(@$media["object"]){
     
       <?php if(!empty(@$media["object"])){ ?>
       <div id="" data-pk="<?php echo $key ?>"  data-type="<?php echo @$media["object"]["type"]; ?>" 
-           class="col-md-12 no-padding margin-bottom-10 newsActivityStream<?php echo $media["object"]["id"]; ?>" 
+           class="col-xs-12 no-padding margin-bottom-10 margin-top-10 newsActivityStream<?php echo $media["object"]["id"]; ?>" 
                 <?php if(@$media["object"]["type"] == "news"){ ?>style="border:1px solid #E3E3E3;"<?php } ?>>
         <?php 
              if(@$media["object"]["type"] == "news")
