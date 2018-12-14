@@ -58,6 +58,11 @@ class IndexAction extends CAction
 		if (in_array($type,[Organization::COLLECTION, Project::COLLECTION, Event::COLLECTION, Person::COLLECTION]))
 			$params["deletePending"] = Element::isElementStatusDeletePending($type, $id);
 
-		echo $ctrl->render("news.views.co.index", $params);
+		
+
+		if(Yii::app()->request->isAjaxRequest)
+            echo $ctrl->renderPartial("news.views.co.index", $params);
+        else 
+            echo $ctrl->render("news.views.co.index", $params);
     }
 }
