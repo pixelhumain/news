@@ -227,7 +227,7 @@ class GetAction extends CAction
 		  			$textTag = array($textTag[0], $tagClear);
 		  			$where["tags"] = array('$in' => $textTag); 		
 		  		}else{
-					$where = array_merge($where,  array('text' => new MongoRegex("/".$_POST["name"]."/i") ) );
+					$where = array_merge($where,  array('text' => new MongoRegex("/".$textSearch."/i") ) );
 		  		}
 		  	
 				

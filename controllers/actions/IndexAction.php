@@ -19,6 +19,7 @@ class IndexAction extends CAction
 			"nbCol"=>2,
 			"inline"=> false,
 			"scroll"=>true,
+			"search"=>false,
 			"clickEvent"=>false
 		);
 		if(@$parent){
@@ -46,6 +47,7 @@ class IndexAction extends CAction
 			$params["inline"] = @$_POST["inline"] ? $_POST["inline"] : false;
 			$params["indexStep"] = @$_POST["indexStep"] ? $_POST["indexStep"] : 6;
 			$params["scroll"] = @$_POST["scroll"] ? $_POST["scroll"] : true;
+			$params["search"] = @$_POST["search"] ? $_POST["search"] : false;
 			$params["clickEvent"] = @$_POST["clickEvent"] ? $_POST["clickEvent"] : false;
 		} else if (@$_GET){
 			$params["formCreate"] = @$_GET["formCreate"] ? $_GET["formCreate"] : true;

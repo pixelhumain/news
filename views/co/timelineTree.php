@@ -161,7 +161,7 @@ foreach($news as $key => $media){
   var months = ["<?php echo Yii::t('common','january') ?>", "<?php echo Yii::t('common','febuary') ?>", "<?php echo Yii::t('common','march') ?>", "<?php echo Yii::t('common','april') ?>", "<?php echo Yii::t('common','may') ?>", "<?php echo Yii::t('common','june') ?>", "<?php echo Yii::t('common','july') ?>", "<?php echo Yii::t('common','august') ?>", "<?php echo Yii::t('common','september') ?>", "<?php echo Yii::t('common','october') ?>", "<?php echo Yii::t('common','november') ?>", "<?php echo Yii::t('common','december') ?>"];
   var contentKey = "<?php echo Document::IMG_SLIDER; ?>";
   var scrollEnd=<?php echo json_encode(@$endStream) ?>;
-  var nbCol = <?php echo json_encode(@$nbCol); ?>;
+  //var nbCol = <?php echo json_encode(@$nbCol); ?>;
   var viewMode = "<?php echo @$viewMode ?>";
   jQuery(document).ready(function() {
     if($("#noMoreNews").length)
@@ -208,8 +208,9 @@ foreach($news as $key => $media){
       scopeClass = "";
 
       if(actionController=="save"){
-        $("#"+v.type+e).parent().find(".list-news:eq(1)").addClass("addMargin");
-        if(!$("#"+v.type+e).parent().find(".list-news:eq(1)").hasClass("timeline-inverted"))
+        if(nbCol>1)
+          $("#"+v.type+e).parent().find(".list-news:eq(1)").addClass("addMargin");
+        if(!$("#"+v.type+e).parent().find(".list-news:eq(1)").hasClass("timeline-inverted") || nbCol==1)
           $("#"+v.type+e).addClass("timeline-inverted");
       }
       

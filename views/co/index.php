@@ -44,8 +44,6 @@ $cssAnsScriptFiles = array(
     '/plugins/to-markdown/to-markdown.js',
 );
 HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFiles, Yii::app()->request->baseUrl);
-
-
 ?>
 <style type="text/css">
   <?php if($nbCol == 1){ ?>
@@ -62,10 +60,9 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFiles, Yii::app()->request->
 	if(@$inline && $inline) $class.="inline";
 	if(@$nbCol && $nbCol) $class.=" nb-col-".$nbCol;
 ?> 
-<div class="col-xs-12 padding-20 container-live <?php echo $class ?>">
+<div class="col-xs-12 no-padding container-live <?php echo $class ?>">
 	<?php if($formCreate!=="false"){ ?> 
-		<div class="col-md-12 col-sm-12 col-xs-12 no-padding margin-bottom-15" 
-	    	 style="<?php if(!@$isLive){ ?>padding-left:25px!important;<?php } ?>">
+		<div class="col-xs-12 no-padding margin-bottom-15">
 		<?php 
 	        $params = array(
 	                  "contextParentId" => @$contextParentId,
@@ -93,9 +90,9 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFiles, Yii::app()->request->
 	var newsScopes={};
 	var loadingData = false;
 	var isLive = <?php echo json_encode(@$isLive) ?>;
-	var indexStepNews = "<?php echo @$indexStep; ?>";
-	var inline = "<?php echo @$inline; ?>";
-	var nbCol = "<?php echo @$nbCol; ?>";
+	var indexStepNews = <?php echo json_encode(@$indexStep); ?>;
+	var inline = <?php echo json_encode(@$inline); ?>;
+	var nbCol = parseInt(<?php echo json_encode(@$nbCol); ?>);
 	var clickTarget = "<?php echo @$clickEvent; ?>";
 	var scrollEvent = "<?php echo @$scroll; ?>";
 	var clickEvent = (!scroll) ? true : false;
@@ -103,6 +100,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFiles, Yii::app()->request->
 	//var initLimitDate = <?php echo json_encode(@$limitDate) ?>;
 	var contextParentType = <?php echo json_encode(@$contextParentType) ?>;
 	var contextParentId = <?php echo json_encode(@$contextParentId) ?>;
+	var searchInNews = <?php echo json_encode(@$search) ?>;
 	var canPostNews = <?php echo json_encode(@$canPostNews) ?>;
 	var canManageNews = <?php echo json_encode(@$canManageNews) ?>;
 	var uploadUrl = "<?php echo Yii::app()->params['uploadUrl'] ?>";
@@ -118,6 +116,7 @@ HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFiles, Yii::app()->request->
 			scrollTarget: "window",
 			click: clickEvent,
 			nbCol : nbCol,
+			search : searchInNews,
 			clickTarget : clickTarget,
 			containerTreeNews : "#news-list",
 			dateLimit : dateLimit,

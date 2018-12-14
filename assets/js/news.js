@@ -3,7 +3,6 @@ var newsObj = {
 	init : function (params) {
 		scrollEnd = false;
 		loadingData = true;
-		//showLoader(params.containerTreeNews);
 		var dateLimit=0;
 		loadStream(params);
 		if(params.scroll && params.scroll!=="false"){
@@ -87,17 +86,13 @@ var newsObj = {
 var newsCustom = {}
 var tagsFilterListHTML = "";
 var scopesFilterListHTML = "";
-function isLiveGlobal(){
-	return (location.hash.indexOf("#live") == 0 || location.hash.indexOf("#freedom") >= 0 || location.hash.indexOf("#city.detail") == 0);
-	return typeof liveScopeType != "undefined";// && liveScopeType == "global";
-}
 /*
 * function loadStream() loads news for timeline: 5 news are download foreach call
 * @param string contextParentType indicates type of wall news
 * @param string contextParentId indicates the precise parent id 
 * @param strotime dateLimite indicates the date to load news
 */
-var loading = 	"<div class='loader shadow2 letter-blue text-center margin-bottom-50'>"+
+var loading = 	"<div class='loader shadow2 bold letter-blue text-center margin-bottom-50'>"+
 					"<span style=''>"+
 						"<i class='fa fa-spin fa-circle-o-notch'></i> "+
 						"<span>"+trad.currentlyloading+" ...</span>" + 
@@ -106,23 +101,19 @@ var loading = 	"<div class='loader shadow2 letter-blue text-center margin-bottom
 var loadStream = function(params){ mylog.log("loadStream");
 	loadingData = true;
 	if(typeof dateLimit == "undefined") dateLimit = 0;
-	//isLive = isLiveBool==true ? "/isLive/true" : "";
 	var url = "news/co/get";
-	var dataSearch=constructSearchObjectAndGetParams();
+	var dataSearch= (notNull(params.search) && params.search) ? constructSearchObjectAndGetParams(): {};
 	if(notNull(params.type)) url+="/type/"+params.type;
 	if(notNull(params.id)) url+="/id/"+params.id;
-	if(notNull(params.isLive)) url+="/isLive/true";
-	url+="/date/"+dateLimit;//+"?tpl=co2&renderPartial=true";
+	if(notNull(params.isLive) && params.isLive) url+="/isLive/true";
+	url+="/date/"+dateLimit;
 	$.ajax({ 
         type: "POST",
         url: baseUrl+'/'+url,
         data: { indexStep:params.indexStep,
         		nbCol:params.nbCol,
         		inline:params.inline,
-        		search: dataSearch
-	
-        		//indexMax:indexMax, 
-        		//renderPartial:true 
+        		search: dataSearch 
         },
         success:
             function(data) {
@@ -152,14 +143,6 @@ var loadStream = function(params){ mylog.log("loadStream");
 var colNotifOpen = true;
 function toogleNotif(open){
     if(typeof open == "undefined") open = false;
-    if(open==false){
-        //$('#notif-column').removeClass("col-md-3 col-sm-3 col-lg-3").addClass("hidden");
-        //$('#central-container').removeClass("col-md-9 col-lg-9").addClass("col-md-12 col-lg-12");
-    }else{
-        //$('#notif-column').addClass("col-md-3 col-sm-3 col-lg-3").removeClass("hidden");
-        //$('#central-container').addClass("col-sm-12 col-md-9 col-lg-9").removeClass("col-md-12 col-lg-12");
-    }
-
     colNotifOpen = open;
 }
 
@@ -173,7 +156,6 @@ function bindEventNews(){
 		if($(this).val()!="") $(".form-create-news-container .form-actions .writesomethingplease").remove();
 	});
 	$(".scopeShare").click(function() {
-		alert("ouiiiiiiiiii");
 		replaceText=$(this).find("h4").html();
 		$("#btn-toogle-dropdown-scope").html(replaceText+' <i class="fa fa-caret-down" style="font-size:inherit;"></i>');
 		scopeChange=$(this).data("value");
@@ -192,13 +174,6 @@ function bindEventNews(){
 		$("#authorIsTarget").val(authorTargetChange);
 	});
 
-	//$(".date_separator").appear().on('appear', function(event, $all_appeared_elements) {
-	//	separator = '#' + $(this).attr("id");
-	//	$('.timeline-scrubber').find("li").removeClass("selected").find("a[href = '" + separator + "']").parent().addClass("selected");
-	//}).on('disappear', function(event, $all_disappeared_elements) {   				
-	//	separator = $(this).attr("id");
-	//	$('.timeline-scrubber').find("a").find("a[href = '" + separator + "']").parent().removeClass("selected");
-	//});
 	$('.newsShare').off().on("click",function(){
 		toastr.info('TODO : SHARE this news Entry');
 		mylog.log("newsShare",$(this).data("id"));
@@ -397,7 +372,7 @@ function updateNews(idNews, newText, type){
 	$(classe2+'[data-pk="'+idNews+'"] .timeline_'+classe1).html(newText);
 }
 
-function bindEventTextAreaNews(idTextArea, idNews,data/*, isAnswer, parentCommentId*/){
+function bindEventTextAreaNews(idTextArea, idNews,data){
 	processUrl.getMediaFromUrlContent(idTextArea,"#results",1);
 	if($("#form-news-update #results").html() !="") $("#form-news-update #results").show();
 	mentionsInit.get(idTextArea);
@@ -464,7 +439,6 @@ function convertScopeForUpdate(loc){
 }
 
 function deleteNews(id, type, $this){
-	//var $this=$(this);
 	bootbox.confirm(trad["suretodeletenews"], 
 		function(result) {
 			if (result) {
@@ -624,14 +598,12 @@ function toggleFilters(what){
 
     scopeHtml+='</div>';
         '</div>';
-	//actionOnSetGlobalScope="save";
 	domForm=(notNull(target))?target:"#scopeListContainerForm";
 	$(domForm).html(scopeHtml);
 	bindSearchOnNews();
 	bindScopesNewsEvent();
 	$("#multiscopes-news-btn").trigger("click");
 	getCommunexionLabel();
-	//countFavoriteScope();
 }
 function bindSearchOnNews(){
     $("#searchOnCityNews").off().on("keyup", function(e){
@@ -643,9 +615,7 @@ function bindSearchOnNews(){
     });
 }
 function bindScopesNewsEvent(news){
-
 	mylog.log("bindScopesNewsEvent", news);
-
 	$(".manageMultiscopes, #news-scopes-container .item-scope-checker").off().on("click", function(){
 		mylog.log("manageMultiscopes");
 		addScope=$(this).data("add");
@@ -678,7 +648,6 @@ function bindScopesNewsEvent(news){
 		$(".scopes-btn-news").removeClass("active");
 		$(this).addClass("active");
 		myScopes.typeNews=$(this).data("type");
-		//$(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
 		$("#scopes-news-form .scopes-container").html(constructScopesHtml(true));
 		if(myScopes.typeNews=="communexion")
 				$("#scopes-news-form .scopes-container .scope-order").sort(sortSpan) // sort elements
@@ -725,10 +694,8 @@ function showFormBlock(bool){
 		//SCOPE DIV//
 		$('.extract_url').hide();
 		$(".form-create-news-container #falseInput").show();
-		
 		$("#toogle_filters").show();	
 		$(".form-create-news-container #btn-slidup-scopetags").show("fast");
-		//if(typeof slidupScopetagsMin != "undefined") slidupScopetagsMin(true);
 		
 	}
 }
@@ -766,7 +733,6 @@ function saveNews(){
 			$.ajax({
 		        type: "POST",
 		        url: baseUrl+"/news/co/save",
-		        //dataType: "json",
 		        data: newNews,
 				type: "POST",
 		    })

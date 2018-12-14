@@ -3,6 +3,7 @@
   padding: 20px 0 20px;
   position: relative;
   width:100%;
+  margin-bottom: 60px;
 }
 .timeline:before {
   top: 0;
