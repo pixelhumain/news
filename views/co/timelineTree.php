@@ -100,7 +100,7 @@ foreach($news as $key => $media){
             $abuseMax = Yii::app()->session['paramsConfig']["nbReportCoModeration"];
 
             if( @$media["reportAbuseCount"] >= $abuseMax){ ?>
-           <h6 class="pull-left">
+          <!-- <h6 class="pull-left">
               <small class="pull-left margin-left-10 letter-orange">
                 <i class="fa fa-flag"></i> Ce contenu a été signalé <?php echo @$media["reportAbuseCount"]; ?> fois !
                 <?php if(@$media["reportAbuseCount"] < $abuseMax){ ?>
@@ -115,11 +115,11 @@ foreach($news as $key => $media){
                    data-newsid="<?php echo @$media["_id"]; ?>" 
                    data-toggle="modal" data-target="#modal-moderation">
               <i class="fa fa-balance-scale"></i> Modération
-          </button>
+          </button>-->
           <?php } ?>
          <?php } ?>
       <?php 
-        $this->renderPartial('timelinePanel', 
+        $this->renderPartial('news.views.co.timelinePanel', 
                     array(  "key"=>$key,
                             "media"=>$media,
                             "authorType"=>$authorType,

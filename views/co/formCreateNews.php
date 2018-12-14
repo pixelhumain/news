@@ -93,7 +93,7 @@
       )
     );//News::$newsTypeContext;
   $isLive = isset($_GET["isLive"]) ? true : false;
-  $contextName = "";
+  $contextName = @$parent["name"];
   $contextIcon = "bookmark fa-rotate-270";
   $contextTitle = "";
   $imgProfil = $this->module->assetsUrl . "/images/news/profile_default_l.png"; 
