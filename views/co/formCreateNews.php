@@ -121,6 +121,11 @@
         </button>
         <?php //} ?>
 
+        <button onclick='showFormBlock(true);dataHelper.activateMarkdown("#get_url");' class="btn btn-link btn-xs bold letter-light hidden-xs pull-right margin-right-5"
+                style="margin-top: -3px;">
+                <i class="fa fa-list-ul"></i> Markdown
+        </button>
+
       </div>
 
       <div class="tools_bar bg-white">
@@ -163,6 +168,7 @@
         <div class="form-group tagstags col-md-12 col-sm-12 col-xs-12 no-padding">
             <input id="tags" type="" data-type="select2" name="tags" placeholder="#Tags" value="" style="width:100%;">
         </div>
+        
         <div id="scopeListContainerForm" class="form-group col-md-12 col-sm-12 col-xs-12 no-padding margin-bottom-10"></div>
         <div class="form-actions col-md-12 col-sm-12 col-xs-12 no-padding" style="display: block;">
           
